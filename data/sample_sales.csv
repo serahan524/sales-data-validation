@@ -1,0 +1,6 @@
+order_id,order_date,customer_id,product,sales_amount
+1001,2026-07-01,C001,Keyboard,85.50
+1002,2026-07-01,C002,Monitor,320.00
+1003,2026-07-02,C001,Mouse,45.00
+1004,2026-07-02,C003,Laptop Stand,70.00
+1005,2026-07-03,C004,Webcam,110.00
