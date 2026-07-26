@@ -2,7 +2,9 @@
 from pathlib import Path
 
 import pandas as pd
+import logging
 
+logger = logging.getLogger(__name__)
 
 
 REQUIRED_COLUMNS = {
@@ -20,9 +22,11 @@ def validate_required_columns(data: pd.DataFrame) -> None:
         raise ValueError(
             f"Required column not found: {sorted(missing_columns)} "
         )
+    logger.info("Required columns validated.")
 
 
 def validate_not_empty(data:pd.DataFrame) -> None:
     """Validate that the sales data contains at least one row."""
     if data.empty:
         raise ValueError("Sales data is empty")
+    logger.info("Sales data loaded successfully.")
