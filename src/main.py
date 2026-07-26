@@ -1,4 +1,8 @@
+import logging
+import os
+
 from pathlib import Path
+from dotenv import load_dotenv
 
 from loader import load_sales_data
 from report import summarize_sales
@@ -7,16 +11,17 @@ from validator import (
     validate_not_empty,
 )
 
-import logging
+load_dotenv()
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(name)s - %(levelname)s: %(message)s",
+)
 
 logger = logging.getLogger(__name__)
 
-DATA_FILE = Path("data/sample_sales.csv")
+DATA_FILE = Path(os.environ["DATA_FILE"])
 
-logging.basicConfig(
-    level=logging.ERROR,
-    format="%(name)s - %(levelname)s: %(message)s",
-)
 
 def main() -> None:
     try: 
