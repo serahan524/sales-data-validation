@@ -1,9 +1,6 @@
 import logging
-import os
 
-from pathlib import Path
-from dotenv import load_dotenv
-
+from config import DATA_FILE
 from loader import load_sales_data
 from report import summarize_sales
 from validator import (
@@ -11,7 +8,6 @@ from validator import (
     validate_not_empty,
 )
 
-load_dotenv()
 
 logging.basicConfig(
     level=logging.INFO,
@@ -20,17 +16,13 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
-DATA_FILE = Path(os.environ["DATA_FILE"])
-
 
 def main() -> None:
     try: 
         sales_data = load_sales_data(DATA_FILE)       
         validate_required_columns(sales_data)
-        
         validate_not_empty(sales_data)
-        
-    
+         
     except FileNotFoundError as error: 
         logger.error(f"Error: {error}")
 

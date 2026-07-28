@@ -6,8 +6,6 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-
-
 def load_sales_data(file_path: Path) -> pd.DataFrame:
     """Load sales data from a CSV file."""
     if not file_path.exists():
